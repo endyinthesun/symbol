@@ -1,0 +1,34 @@
+@import '../../scss/variables'; 
+.slick-slider {
+    .slick-list {
+        .slide {
+            &_figure {
+                height: 270px;
+                overflow: hidden;
+                img {
+                    width: 100%;
+                }
+            }
+            &_title {
+                margin-top: 16px;
+                text-align: center;
+                span {
+                    font-size: 24px;
+                    font-weight: 400;
+                }
+            }
+            &_link {
+                margin-top: 8px;
+                text-align: center;
+                &_wrapper {
+                    display: inline-block;
+                    border-bottom: 1px solid $link-color;
+                    padding-bottom: 4px;
+                }
+            }
+        }
+    }
+    .slick-dots {
+        bottom: -40px;
+    }
+}

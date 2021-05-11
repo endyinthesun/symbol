@@ -1,0 +1,11 @@
+@import "./scss/bootstrap/bootstrap-reboot.scss";
+@import './scss/variables';
+@import "./scss/fonts";
+
+body {
+  font-family: 'ProximaNova-Regular', sans-serif;
+}
+
+a {
+  color: $link-color;
+}
