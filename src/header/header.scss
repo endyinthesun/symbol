@@ -1,0 +1,71 @@
+@import '../scss/variables';
+
+@mixin burger-line {
+    @content;
+    height: 1px;
+    background-color: #fff;
+    border-radius: 1px;
+}
+
+header {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $main-bl;
+    padding: 0 10px;
+    .left, .right {
+        display: flex;
+        align-items: center;
+        .icon {
+            height: 24px;
+            width: 24px;
+        }
+    }
+    .logo {
+        height: 38px;
+        width: 118px;
+    }
+    .right {
+        .likes, .cart {
+            display: flex;
+            .number {
+                margin-left: 8px;
+                color: $white;
+                font-weight: 600;
+                font-size: 1rem;
+            }
+        }
+        .likes {
+            margin-right: 15px;
+        }
+    }
+    .menu_btn {
+        width: 32px;
+        height: 32px;
+        margin-right: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        &-burger {
+            width: 28px;
+            position: relative;
+            @include burger-line;
+            &::before, &::after {
+                left: 0;
+                content: '';
+                position: absolute;
+                @include burger-line;
+            }
+            &::before {
+                width: 28px;
+                transform: translateY(-6px);
+            }
+            &::after {
+                width: 20px;
+                transform: translateY(6px);
+            }
+        }
+    }
+}
