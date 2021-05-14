@@ -1,34 +1,169 @@
 @import '../../scss/variables'; 
-.slick-slider {
-    .slick-list {
-        .slide {
-            &_figure {
-                height: 270px;
-                overflow: hidden;
-                img {
-                    width: 100%;
-                }
-            }
-            &_title {
-                margin-top: 16px;
-                text-align: center;
-                span {
-                    font-size: 24px;
-                    font-weight: 400;
-                }
-            }
-            &_link {
-                margin-top: 8px;
-                text-align: center;
-                &_wrapper {
-                    display: inline-block;
-                    border-bottom: 1px solid $link-color;
-                    padding-bottom: 4px;
+@import '../../scss/breakpoints';
+
+.promo {
+    .slick-slider {
+        .slick-list {
+            .slide {
+                display: block !important;
+                &_figure {
+                    overflow: hidden;
+                    img {
+                        width: 100%;
+                    }
                 }
             }
         }
     }
-    .slick-dots {
-        bottom: -40px;
+    @include mobile {
+        padding-bottom: 74px;
+        .slick-slider {
+            .slick-list {
+                .slide {
+                    &_figure {
+                        height: 277px;
+                    }
+                    &_title {
+                        margin-top: 18px;
+                        letter-spacing: 1px;
+                        text-align: center;
+                        span {
+                            font-size: 24px;
+                            font-weight: 400;
+                        }
+                    }
+                    &_link {
+                        text-align: center;
+                        &_wrapper {
+                            display: inline-block;
+                            border-bottom: 1px solid $link-color;
+                            padding-bottom: 4px;
+                        }
+                    }
+                }
+            }
+            .slick-dots {
+                bottom: -33px;
+            }
+        }
+    };
+    @include tablet {
+        padding-bottom: 0;
+        .slick-slider {
+            .slick-arrow {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                z-index: 1;
+                right: 16px;
+                background: $white; 
+                width: 48px;
+                height: 48px;
+                i {
+                    border: solid black;
+                    border-width: 0 2px 2px 0;
+                    display: inline-flex;
+                    align-self: center;
+                    padding: 5px;
+                }
+                &::before {
+                    content: '';
+                }
+                &.slick-next {
+                    top: auto;
+                    bottom: 32%;
+                }
+                &.slick-prev {
+                    top: 42%;
+                    bottom: auto;
+                    left: auto;
+                }
+            } 
+            .slick-list {
+                .slide {
+                    &_figure {
+                        height: 450px;
+                        position: relative;
+                        .slide_block {
+                            position: absolute;
+                            padding: 25px 41px;
+                            bottom: 55px;
+                            left: 55px;
+                            background: $white;
+                            &_title {
+                                margin: 0;
+                                text-align: left;
+                                span {
+                                    font-size: 35px;
+                                    font-weight: 400;
+                                }
+                            }
+                            &_link {
+                                margin-top: 8px;
+                                text-align: left;
+                                &_wrapper {
+                                    display: inline-block;
+                                    border-bottom: 1px solid $link-color;
+                                    padding-bottom: 4px;
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+            }
+        }
     }
+    @include desktop {
+        .slick-slider {
+            .slick-arrow {
+                right: 66px;
+                &.slick-next {
+                    bottom: 34%;
+                }
+                &.slick-prev {
+                    top: 42%;
+                }
+                }
+                .slick-list {
+                    .slide {
+                        &_figure {
+                            height: 511px;
+                            .slide_block {
+                                bottom: 40px;
+                                left: 40px;
+                        }
+                    }
+                }
+            }
+            } 
+            
+    }
+    @include big-desktop {
+        .slick-slider {
+            .slick-arrow {
+                right: 205px;
+                &.slick-next {
+                    bottom: 35%;
+                }
+                &.slick-prev {
+                    top: 43%;
+                }
+                }
+                .slick-list {
+                    .slide {
+                        &_figure {
+                            height: 594px;
+                            .slide_block {
+                                bottom: 70px;
+                                left: 70px;
+                        }
+                    }
+                }
+            }
+        } 
+           
+    }
+    
 }

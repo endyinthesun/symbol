@@ -1,0 +1,93 @@
+@import '../../scss/variables';
+@import '../../scss/breakpoints';
+
+.advantages {
+    background-color: $main-bl;
+    &_wrapper {
+        margin: 0 auto;
+        max-width: 1200px;
+        display: flex;
+        color: $white;
+        font-size: 14px;
+        text-align: center;
+        padding: 48px 0;
+        .title {
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 600;
+            line-height: 21px;
+        }
+        .subtitle {
+            text-align: center;
+            opacity: 0.6;
+        }
+        .free_del {
+            position: relative;
+            &::after {
+                content: '';
+                position: absolute;
+                background-color: $white;
+                opacity: 0.6;
+            }
+        }
+        .paypass {
+            padding-top: 16px;
+        }
+    }
+    @include mobile {
+        &_wrapper {
+            flex-direction: column;
+            .free_del {
+                padding-bottom: 20px;
+                &::after {
+                    bottom: 0;
+                    transform: translateX(-50%);
+                    height: 1px;
+                    width: 46px;
+                }
+            }
+        }
+    };
+    @include tablet {
+        &_wrapper {
+            flex-direction: row;
+            padding: 30px 0;
+            .subtitle {
+                margin-top: 10px;
+            }
+            .free_del, .paypass {
+                padding: 0 81px;
+                width: 50%;
+            }
+            .free_del {
+                &::after {
+                    bottom: 50%;
+                    right: 0;
+                    transform: translateY(50%);
+                    height: 46px;
+                    width: 1px;
+                }
+            }
+        }
+    }
+    @include desktop {
+        &_wrapper {
+            padding: 58px 0;
+            flex-direction: row;
+            .free_del, .paypass {
+                padding: 0 85px;
+                width: 50%;
+            }
+            .free_del {
+                &::after {
+                    bottom: 50%;
+                    right: 0;
+                    transform: translateY(50%);
+                    height: 46px;
+                    width: 1px;
+                }
+            }
+        }
+    }
+    
+}

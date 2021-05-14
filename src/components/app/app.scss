@@ -1,0 +1,14 @@
+@import '../../scss/breakpoints';
+@import '../../scss/variables';
+
+.content {
+    @include mobile {
+        margin-top: $height-header-mobile;
+    }
+    @include tablet {
+        margin-top: $height-header-tablet;
+    }
+    @include desktop {
+        margin-top: $height-header-desktop;
+    }
+}

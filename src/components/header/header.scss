@@ -1,4 +1,5 @@
 @import '../../scss/variables';
+@import '../../scss/breakpoints';
 
 @mixin burger-line {
     @content;
@@ -8,63 +9,330 @@
 }
 
 header {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
+    top: 0;
+    z-index: 2;
+    overflow: hidden;
     background-color: $main-bl;
-    padding: 0 10px;
-    .left, .right {
+    width: 100%;
+    .react-break {
         display: flex;
+        height: 100%;
+        flex-wrap: nowrap;
+        justify-content: space-between;
         align-items: center;
-        .icon {
-            height: 24px;
-            width: 24px;
-        }
     }
-    .logo {
-        height: 38px;
-        width: 118px;
-    }
-    .right {
-        .likes, .cart {
-            display: flex;
-            .number {
-                margin-left: 8px;
-                color: $white;
-                font-weight: 600;
-                font-size: 1rem;
+    @include mobile {
+        position: fixed;
+        padding: 0 10px;
+        height: $height-header-mobile;
+        .react-break {
+            &--isAtMost-tablet {
+                .left, .right {
+                    display: flex;
+                    align-items: center;
+                    .icon {
+                        height: 24px;
+                        width: 24px;
+                    }
+                }
+                .left {
+                    flex: 1;
+                    position: relative;
+                    label {
+                        margin: 0;
+                        margin-right: 8px;
+                    }
+                    .menu_btn {
+                        width: 32px;
+                        height: 32px;
+                        margin-right: 32px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+                        &-burger {
+                            width: 28px;
+                            position: relative;
+                            @include burger-line;
+                            &::before, &::after {
+                                left: 0;
+                                content: '';
+                                position: absolute;
+                                @include burger-line;
+                            }
+                            &::before {
+                                width: 28px;
+                                transform: translateY(-6px);
+                            }
+                            &::after {
+                                width: 20px;
+                                transform: translateY(6px);
+                            }
+                        }
+                    }
+                    .search_field {
+                        position: absolute;
+                        display: flex;
+                        background: transparent;
+                        border: none;
+                        margin-left: 9px;
+                        width: 0px;
+                        left: 110px;
+                        transition: all 0.5s;
+                        &:focus-within {
+                            height: 100%;
+                            margin: 0;
+                            padding: 0px 14px;
+                            outline: none !important;
+                            background: $white;
+                            width: calc(200% - 105px);
+                            border-radius: 2px;
+                            transition: all 0.5s;
+                            .search_field_clear {
+                                visibility: visible;
+                                width: 25px;
+                                outline: none;
+                            }
+                        }
+                        input {
+                            width: 100%;
+                            height: 100%;
+                            position: relative;
+                            background: transparent;
+                            border: none;
+                            font-size: 14px;
+                            color: $gray;
+                            transition: all 0.5s;
+                            outline: none;
+                        }
+                        &_clear {
+                            visibility: hidden;
+                            width: 0px;
+                            padding: 0;
+                            border: none;
+                            background: none;
+                        }
+                    }
+                    .search_icon {
+                        cursor: pointer;
+                        margin: 0;
+                    }
+                }
+                .logo {
+                    height: 38px;
+                    width: 118px;
+                }
+                .right {
+                    flex: 1;
+                    justify-content: flex-end;
+                    .icon {
+                        margin-right: 8px;
+                    }
+                    .likes, .cart {
+                        display: flex;
+                        .number {
+                            color: $white;
+                            font-weight: 600;
+                            font-size: 1rem;
+                        }
+                    }
+                    .likes {
+                        margin-right: 15px;
+                    }
+                }
+                
             }
         }
-        .likes {
-            margin-right: 15px;
+    };
+    @include tablet {
+        height: $height-header-tablet;
+        padding: 0 19px;
+        .react-break {
+            &--isAtMost-tablet {
+                .left {
+                    .menu_btn {
+                        margin-right: 56px;
+                    }
+                    .search_field {
+                        &:focus-within {
+                            width: 50%;
+                        }
+                    }
+                }
+                .logo {
+                    width: 122px;
+                    height: 40px;
+                }
+                .right {
+                    .likes {
+                        margin-right: 36px;
+                    }
+                }
+            }
         }
     }
-    .menu_btn {
-        width: 32px;
-        height: 32px;
-        margin-right: 32px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        &-burger {
-            width: 28px;
-            position: relative;
-            @include burger-line;
-            &::before, &::after {
-                left: 0;
-                content: '';
-                position: absolute;
-                @include burger-line;
-            }
-            &::before {
-                width: 28px;
-                transform: translateY(-6px);
-            }
-            &::after {
-                width: 20px;
-                transform: translateY(6px);
+    @include desktop {
+        height: $height-header-desktop;
+        padding: 0 40px;
+        .react-break {
+            flex-direction: column;
+            &--isAtLeast-desktop {
+                max-width: 1200px;
+                margin: 0 auto;
+                .head, .subhead {
+                    display: flex;
+                    width: 100%;
+                    height: 50%;
+                    justify-content: space-between;
+                }
+                .head {
+                    align-items: flex-end;
+                    .left, .right {
+                        display: flex;
+                        align-items: center;
+                    }
+                    .left {
+                        flex: 1;
+                        padding-bottom: 8px;
+                       a {
+                            font-weight: 400;
+                            font-size: 14px;
+                            color: $gray;
+                            text-transform: uppercase;
+                            margin-right: 23px;
+                       }
+                    }
+                    .logo {
+                        height: 46px;
+                        width: 167px;
+                    }
+                    .right {
+                        flex: 1;
+                        padding-bottom: 8px;
+                        justify-content: flex-end;
+                        a {
+                            color: $white;
+                        }
+                        .phone_num {
+                            margin-right: 47px;
+                            font-size: 16px;
+                        }
+                        .link {
+                            display: inline-flex;
+                            align-items: center;
+                            margin-right: 34px;
+                            font-size: 14px;
+                            &:last-child {
+                                margin-right: 0;
+                            }
+                            .triangle-down {
+                                width: 0;
+                                height: 0;
+                                margin-left: 12px;
+                                border-style: solid;
+                                border-width: 4px 4px 0 4px;
+                                border-color: #FFF transparent transparent transparent;
+                                display: inline-flex;
+                            }
+                        }
+                    }
+                }
+                .subhead {
+                    .left, .right {
+                        display: flex;
+                        width: 50%;
+                    }
+                    .left {
+                        align-items: center;
+                        a {
+                            color: $white;
+                            margin-right: 24px;
+                        }
+                    }
+                    .right {
+                        height: 100%;
+                        justify-content: flex-end;
+                        .icon {
+                            height: 24px;
+                            width: 24px;
+                        }
+                        .search_bar {
+                            display: flex;
+                            flex-direction: row-reverse;
+                            justify-content: flex-start;
+                            align-items: center;
+                            width: 100%;
+                            label {
+                                margin: 0;
+                            }
+                            .search_field {
+                                display: flex;
+                                align-items: center;
+                                margin-right: 7px;
+                                transition: all 0.5s;
+                                padding: 0 9px;
+                                height: 22px;
+                                width: 240px;
+                                input {
+                                    width: 100%;
+                                    height: 100%;
+                                    position: relative;
+                                    background: transparent;
+                                    border: none;
+                                    font-size: 14px;
+                                    color: $gray;
+                                    transition: all 0.5s;
+                                    outline: none;
+                                    
+                                }
+                                &_clear {
+                                    visibility: hidden;
+                                    width: 0px;
+                                    padding: 0;
+                                    border: none;
+                                    background: none;
+                                }
+                                &:focus-within {
+                                    height: 100%;
+
+                                    width: inherit;
+                                    background: white;
+                                    transition: all 0.5s;
+                                    .search_field_clear {
+                                        visibility: visible;
+                                        width: 10px;
+                                        outline: none;
+                                    }
+                                    &~label {
+                                        visibility: hidden;
+                                    }
+                                    
+                                }
+                               
+                            }
+                            
+                        }
+                        .profile_bar {
+                            display: flex;
+                            font-weight: 600;
+                            color: $white;
+                            .user {
+                                height: 100%;
+                            }
+                            &>div {
+                                display: flex;
+                                align-items: center;
+                                margin-right: 29px;
+                                &:last-child {
+                                    margin-right: 0;
+                                }
+                                .icon {
+                                    margin-right: 6px;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }

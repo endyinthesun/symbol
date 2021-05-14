@@ -1,31 +1,29 @@
+import Main from '../pages/main';
 import Header from '../header';
-import Promo from '../promo';
+
+import { layoutGenerator } from 'react-break';
 
 import './app.scss';
 
 function App() {
-  const promoContent = [
-    {
-      imgName: 'bag',
-      title: 'Новая коллекция', 
-    },
-    {
-      imgName: 'bag',
-      title: 'Старая коллекция', 
-    },
-    {
-      imgName: 'bag',
-      title: 'Еще одна коллекция', 
-    },
-    
-  ];
+  
+  const layout = layoutGenerator({
+    mobile: 375,
+    tablet: 768,
+    desktop: 1280,
+    bigDesktop: 1600,
+  });
   return (
-    <div className="symbol">
-      <Header />
-      <Promo 
-        contentData={promoContent}
+    <>
+      <Header 
+        layout={layout}
       />
-    </div>
+      <div className='content'>
+        <Main 
+          layout={layout}
+        />
+      </div>
+    </>
   );
 }
 
