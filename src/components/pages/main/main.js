@@ -2,6 +2,8 @@ import Promo from '../../promo';
 import Advantages from '../../advantages';
 import Brands from '../../brands';
 
+import './main.scss';
+
 function Main({layout}) {
   const promoContent = [
     {

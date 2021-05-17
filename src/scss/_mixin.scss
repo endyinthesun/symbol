@@ -1,0 +1,16 @@
+@import './variables';
+
+@mixin btn {
+    width: 159px;
+    height: 56px;
+    background: $main-bl;
+    cursor: pointer;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $white;
+    @content;
+}

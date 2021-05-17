@@ -1,0 +1,149 @@
+@import '../../scss/breakpoints';
+@import '../../scss/variables';
+@import '../../scss/mixin';
+
+.brands {
+    &_wrapper {
+        .slick-slider {
+            .slick-slide {
+                >div {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    .part {
+                        display: grid;
+                        justify-items: center;
+                        position: relative;
+                        &::after {
+                            position: absolute;
+                            content: '';
+                            bottom: 0;
+                            height: 1px;
+                            width: 100%;
+                            background: $gray-secondary;
+                        }
+                    }
+                }
+            }
+            .slick-dots {
+                bottom: -39px;
+                li {
+                    margin: 0;
+                }
+            }
+        }
+    }
+    @include mobile {
+        &_wrapper {
+            padding: 25px 8px 47px 8px;
+            .slick-slider {
+                .slick-slide {
+                    >div {
+                        .part {
+                            padding: 24px 0;
+                            grid-template-columns: repeat(2, 1fr);
+                            &::after {
+                                bottom: 0;
+                            }
+                            .brand {
+                                width: 174px;
+                                height: 72px;
+                            }
+                        }
+                    }
+                }
+            }
+            .all_brands {
+                margin-top: 56px;
+                display: flex;
+                justify-content: center;
+                &_btn {
+                    @include btn;
+                }
+            }
+        }
+    }
+    @include tablet {
+        &_wrapper {
+            padding: 47px 16px 82px 16px;
+            .slick-slider {
+                .slick-slide {
+                    >div {
+                        .part {
+                            grid-template-columns: repeat(3, 1fr);
+                            &::after {
+                                bottom: 0;
+                            }
+                            .brand {
+                                width: 232px;
+                                height: 96px;
+                            }
+                        }
+                    }
+                }
+            }
+            .all_brands {
+                &_btn {
+                    @include btn {
+
+                    }
+                }
+            }
+        }
+    }
+    @include desktop {
+        &_wrapper {
+            padding: 32px 41px 56px 41px;
+            .part {
+                grid-template-columns: repeat(5, 1fr);
+                display: grid;
+                justify-items: center;
+                position: relative;
+                padding: 24px 0;
+                &::after {
+                    position: absolute;
+                    content: '';
+                    bottom: 0;
+                    height: 1px;
+                    width: 100%;
+                    background: $gray-secondary;
+                }
+                .brand {
+                    width: 232px;
+                    height: 96px;
+                }
+            }
+            .all_brands {
+                margin-top: 27px;
+            }
+        }
+    }
+     @include desktop {
+        &_wrapper {
+            padding: 32px 41px 56px 41px;
+            
+            .part {
+                grid-template-columns: repeat(5, 1fr);
+                display: grid;
+                justify-items: center;
+                position: relative;
+                padding: 24px 0;
+                &::after {
+                    position: absolute;
+                    content: '';
+                    bottom: 0;
+                    height: 1px;
+                    width: 100%;
+                    background: $gray-secondary;
+                }
+                .brand {
+                    width: 232px;
+                    height: 96px;
+                }
+            }
+            .all_brands {
+                margin-top: 27px;
+            }
+        }
+    }
+    
+}
