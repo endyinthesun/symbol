@@ -92,34 +92,7 @@
     }
     @include desktop {
         &_wrapper {
-            padding: 32px 41px 56px 41px;
-            .part {
-                grid-template-columns: repeat(5, 1fr);
-                display: grid;
-                justify-items: center;
-                position: relative;
-                padding: 24px 0;
-                &::after {
-                    position: absolute;
-                    content: '';
-                    bottom: 0;
-                    height: 1px;
-                    width: 100%;
-                    background: $gray-secondary;
-                }
-                .brand {
-                    width: 232px;
-                    height: 96px;
-                }
-            }
-            .all_brands {
-                margin-top: 27px;
-            }
-        }
-    }
-     @include desktop {
-        &_wrapper {
-            padding: 32px 41px 56px 41px;
+            padding: 32px 0 56px 0;
             
             .part {
                 grid-template-columns: repeat(5, 1fr);
