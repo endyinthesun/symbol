@@ -49,6 +49,8 @@
     @include tablet {
         &_wrapper {
             flex-direction: row;
+            align-items: center;
+            height: 160px;
             padding: 32px 0;
             .subtitle {
                 margin-top: 10px;

@@ -1,5 +1,6 @@
-import Main from '../pages/main';
 import Header from '../header';
+import Main from '../pages/main';
+import Footer from '../footer';
 
 import { layoutGenerator } from 'react-break';
 
@@ -23,6 +24,7 @@ function App() {
           layout={layout}
         />
       </div>
+      <Footer />
     </>
   );
 }

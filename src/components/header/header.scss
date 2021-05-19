@@ -1,5 +1,6 @@
 @import '../../scss/variables';
 @import '../../scss/breakpoints';
+@import '../../scss/mixin';
 
 @mixin burger-line {
     @content;
@@ -226,13 +227,9 @@ header {
                                 margin-right: 0;
                             }
                             .triangle-down {
-                                width: 0;
-                                height: 0;
-                                margin-left: 12px;
-                                border-style: solid;
-                                border-width: 4px 4px 0 4px;
-                                border-color: #FFF transparent transparent transparent;
-                                display: inline-flex;
+                                @include triangle{
+                                    margin-left: 12px;
+                                }
                             }
                         }
                     }
