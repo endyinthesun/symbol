@@ -1,0 +1,23 @@
+@import '../../../scss/variables';
+@import '../../../scss/breakpoints';
+
+.page-not-found {
+    padding-top: 100px;
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: $white;
+    background: $gray;
+    .text {
+        display: flex;
+        justify-content: center;
+    }
+    @include mobile {
+        height: calc(100vh - #{$height-header-mobile});
+    }
+    @include tablet {
+        height: calc(100vh - #{$height-header-tablet});
+    }
+    @include desktop {
+        height: calc(100vh - #{$height-header-desktop});
+    }
+}

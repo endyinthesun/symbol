@@ -1,5 +1,6 @@
 import React from 'react';
 import Slider from "react-slick";
+import { Link } from 'react-router-dom';
 
 import {ReactComponent as Valentino} from './img/valentino.svg';
 import {ReactComponent as TwinsetMilano} from './img/twinset_milano.svg';
@@ -31,20 +32,21 @@ function Brands ({ layout }) {
     }
 
     let brandsIcon = [
-        <MaxMara key='maxmara'/>,
-        <Valentino key='valentino'/>,
-        <DolceGabbana key='dolcegabbana'/>,
-        <JimmyChoo key='jimmychoo'/>,
-        <Prada key='prada'/>,
-        <TwinsetMilano key='twinset'/>,
-        <Gucci key='gucci'/>,
-        <BrunelloCucinelli key='brunello'/>,
-        <BalmainParis key='balmain'/>,
-        <Balenciaga key='balenciaga'/>,
+        <MaxMara id='maxmara'/>,
+        <Valentino id='valentino'/>,
+        <DolceGabbana id='dolcegabbana'/>,
+        <JimmyChoo id='jimmychoo'/>,
+        <Prada id='prada'/>,
+        <TwinsetMilano id='twinset'/>,
+        <Gucci id='gucci'/>,
+        <BrunelloCucinelli id='brunello'/>,
+        <BalmainParis id='balmain'/>,
+        <Balenciaga id='balenciaga'/>,
     ];
     brandsIcon = brandsIcon.map((icon) => {
+        // console.log('icon', icon.props.id);
         return(
-            <div className="brand">
+            <div className="brand" key={icon.props.id}>
                 {icon}
             </div>
         );
@@ -57,20 +59,20 @@ function Brands ({ layout }) {
                     brandsIcon.slice((i*amountIcon), (i*amountIcon) + amountIcon)
             );
         }
-        slides = slides.map((el) => {
+        slides = slides.map((el, index) => {
             let newSlide = [];
             const amountIconInBlock = amountIcon/2;
             for(let j = 0; j < (el.length/amountIconInBlock); j++) {
                 newSlide[j] = (
-                    <div className="part">
+                    <div className="part" key={j}>
                         {el.slice((j*(amountIconInBlock)), (j*(amountIconInBlock)) + (amountIconInBlock))}
                     </div>
                 );
             }
             return (
-                <>
+                <div key={index}>
                     {newSlide}
-                </>
+                </div>
             );
         })
         return slides;
@@ -84,7 +86,7 @@ function Brands ({ layout }) {
                         dots = {true}
                     >
                             {generateIcon(4)}
-                    </Slider> 
+                    </Slider>
                 </OnMobile>
                 <OnTablet>
                     <Slider 
@@ -98,9 +100,11 @@ function Brands ({ layout }) {
                     {generateIcon()}
                 </OnDeskAndBigDesk>
                 <div className="all_brands">
-                    <button className="all_brands_btn">
-                        все бренды
-                    </button>
+                    <Link to='/foo'>
+                        <button className="all_brands_btn">
+                            все бренды
+                        </button>
+                    </Link>
                 </div>
             </div>
         </section>
